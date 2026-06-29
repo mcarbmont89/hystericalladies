@@ -1,0 +1,9 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/[lang]/page": "app/[lang]/page.js",
+  "/[lang]/a-propos/page": "app/[lang]/a-propos/page.js",
+  "/[lang]/contact/page": "app/[lang]/contact/page.js",
+  "/[lang]/apercu/page": "app/[lang]/apercu/page.js",
+  "/[lang]/actualites/page": "app/[lang]/actualites/page.js",
+  "/[lang]/a-venir/page": "app/[lang]/a-venir/page.js"
+}

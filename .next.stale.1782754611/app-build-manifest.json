@@ -1,0 +1,50 @@
+{
+  "pages": {
+    "/actualites/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/actualites/layout.js"
+    ],
+    "/[lang]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/[lang]/page.js"
+    ],
+    "/[lang]/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/[lang]/layout.css",
+      "static/chunks/app/[lang]/layout.js"
+    ],
+    "/[lang]/a-propos/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/[lang]/a-propos/page.js"
+    ],
+    "/[lang]/contact/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/[lang]/contact/page.js"
+    ],
+    "/[lang]/apercu/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/[lang]/apercu/page.js"
+    ],
+    "/[lang]/actualites/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/[lang]/actualites/page.js"
+    ],
+    "/[lang]/a-venir/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/[lang]/a-venir/page.js"
+    ],
+    "/_not-found/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/_not-found/page.js"
+    ]
+  }
+}

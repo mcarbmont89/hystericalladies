@@ -1,26 +1,51 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu, X, Globe } from "lucide-react";
-import { navigation, languages, site } from "@/lib/content";
 
-export default function SiteHeader() {
+type NavItem = { href: string; label: string };
+type LangItem = { code: string; label: string };
+
+export default function SiteHeader({
+  locale,
+  banner,
+  homeHref,
+  nav,
+  languages,
+}: {
+  locale: string;
+  banner: string;
+  homeHref: string;
+  nav: NavItem[];
+  languages: LangItem[];
+}) {
   const [open, setOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Swap the leading locale segment while preserving the rest of the path.
+  function localeHref(code: string) {
+    const segments = (pathname || `/${locale}`).split("/");
+    if (segments.length > 1) {
+      segments[1] = code;
+    }
+    return segments.join("/") || `/${code}`;
+  }
 
   return (
     <header className="sticky top-0 z-40 border-b border-ink/10 bg-paper/95 backdrop-blur">
       {/* Announcement banner */}
       <div className="bg-carmine text-ink">
         <p className="mx-auto max-w-7xl px-4 py-2 text-center text-[0.7rem] font-semibold uppercase tracking-catalog sm:text-xs">
-          {site.banner}
+          {banner}
         </p>
       </div>
 
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-5 sm:px-10 lg:px-16">
         {/* Logotype */}
-        <Link href="/" className="group flex flex-col leading-none">
+        <Link href={homeHref} className="group flex flex-col leading-none">
           <span className="font-display text-xl italic text-carmine sm:text-2xl">
             The Hysterical
           </span>
@@ -31,7 +56,7 @@ export default function SiteHeader() {
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-8 lg:flex">
-          {navigation.map((item) => (
+          {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
@@ -54,7 +79,7 @@ export default function SiteHeader() {
               aria-expanded={langOpen}
             >
               <Globe className="h-3.5 w-3.5" aria-hidden />
-              FR
+              {locale.toUpperCase()}
             </button>
             {langOpen && (
               <div
@@ -64,8 +89,10 @@ export default function SiteHeader() {
                 {languages.map((l) => (
                   <Link
                     key={l.code}
-                    href={l.href}
-                    className="block px-4 py-2 text-xs uppercase tracking-catalog text-ink-soft transition-colors hover:bg-paper-deep hover:text-carmine"
+                    href={localeHref(l.code)}
+                    className={`block px-4 py-2 text-xs uppercase tracking-catalog transition-colors hover:bg-paper-deep hover:text-carmine ${
+                      l.code === locale ? "text-carmine" : "text-ink-soft"
+                    }`}
                     role="menuitem"
                     onClick={() => setLangOpen(false)}
                   >
@@ -93,7 +120,7 @@ export default function SiteHeader() {
       {open && (
         <nav className="border-t border-ink/10 bg-paper lg:hidden">
           <ul className="mx-auto flex max-w-7xl flex-col px-6 py-4">
-            {navigation.map((item) => (
+            {nav.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}

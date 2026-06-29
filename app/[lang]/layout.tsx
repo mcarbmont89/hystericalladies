@@ -63,7 +63,13 @@ export default function LangLayout({
         >
           {content.dict.skipToContent}
         </a>
-        <SiteHeader content={content} />
+        <SiteHeader
+          locale={content.locale}
+          banner={content.site.banner}
+          homeHref={content.routes.home}
+          nav={content.nav.map((n) => ({ href: n.href, label: n.label }))}
+          languages={content.languages.map((l) => ({ code: l.code, label: l.label }))}
+        />
         <main id="main" className="flex-1">
           {children}
         </main>

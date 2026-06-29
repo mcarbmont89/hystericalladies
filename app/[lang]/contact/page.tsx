@@ -38,7 +38,7 @@ export default function ContactPage({ params }: { params: { lang: string } }) {
               {t.formHeading}
             </h2>
             <div className="mt-10">
-              <ContactForm content={getContent(params.lang)} />
+              <ContactForm form={dict.form} email={site.contact.email} />
             </div>
           </div>
 

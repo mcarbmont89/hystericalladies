@@ -1,19 +1,22 @@
 import Link from "next/link";
 import { Instagram, Youtube, Facebook, Mail, Phone, MapPin } from "lucide-react";
-import { site, navigation } from "@/lib/content";
+import type { SiteContent } from "@/lib/content";
 
-export default function SiteFooter() {
+export default function SiteFooter({ content }: { content: SiteContent }) {
+  const { site, nav, routes, dict } = content;
+  const f = dict.footer;
+
   return (
     <footer className="border-t border-ink/10 bg-paper-deep text-ink">
       <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 sm:px-10 lg:grid-cols-4 lg:px-16 lg:py-20">
         {/* Brand */}
         <div className="lg:col-span-1">
-          <Link href="/" className="flex flex-col leading-none">
-          <span className="font-display text-xl font-semibold italic text-carmine">The Hysterical</span>
-          <span className="font-display text-2xl font-extrabold tracking-tightest">Ladies</span>
+          <Link href={routes.home} className="flex flex-col leading-none">
+            <span className="font-display text-xl font-semibold italic text-carmine">The Hysterical</span>
+            <span className="font-display text-2xl font-extrabold tracking-tightest">Ladies</span>
           </Link>
           <p className="mt-4 max-w-xs text-sm text-ink-soft">
-            Une production{" "}
+            {f.productionPrefix}
             <a
               href="https://auhazart.vercel.app/"
               target="_blank"
@@ -22,7 +25,7 @@ export default function SiteFooter() {
             >
               Au Haz Art
             </a>
-            .
+            {f.productionSuffix}
           </p>
 
           <div className="mt-6 flex gap-4">
@@ -58,9 +61,9 @@ export default function SiteFooter() {
 
         {/* Navigation */}
         <div>
-          <h3 className="font-sans text-xs uppercase tracking-catalog text-brass">Plan du site</h3>
+          <h3 className="font-sans text-xs uppercase tracking-catalog text-brass">{f.sitemap}</h3>
           <ul className="mt-5 space-y-2">
-            {navigation.map((item) => (
+            {nav.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
@@ -75,11 +78,11 @@ export default function SiteFooter() {
 
         {/* Contact */}
         <div>
-          <h3 className="font-sans text-xs uppercase tracking-catalog text-brass">Contact</h3>
+          <h3 className="font-sans text-xs uppercase tracking-catalog text-brass">{f.contact}</h3>
           <ul className="mt-5 space-y-3 text-sm text-ink-soft">
             <li className="flex items-start gap-2.5">
               <Mail className="mt-0.5 h-4 w-4 flex-shrink-0" />
-                <a href={`mailto:${site.contact.email}`} className="break-all hover:text-ink">
+              <a href={`mailto:${site.contact.email}`} className="break-all hover:text-ink">
                 {site.contact.email}
               </a>
             </li>
@@ -103,20 +106,20 @@ export default function SiteFooter() {
 
         {/* Legal */}
         <div>
-          <h3 className="font-sans text-xs uppercase tracking-catalog text-brass">Mentions légales</h3>
+          <h3 className="font-sans text-xs uppercase tracking-catalog text-brass">{f.legal}</h3>
           <ul className="mt-5 space-y-1.5 text-sm text-ink-soft">
             <li>SIRET {site.contact.siret}</li>
             <li>{site.contact.representative}</li>
-            <li>Licence {site.contact.license}</li>
+            <li>{f.licenseWord} {site.contact.license}</li>
           </ul>
         </div>
       </div>
 
       <div className="border-t border-ink/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 py-6 text-xs text-ink-soft sm:flex-row sm:px-10 lg:px-16">
-          <p>© {new Date().getFullYear()} Au Haz Art. Tous droits réservés.</p>
+          <p>© {new Date().getFullYear()} Au Haz Art. {f.rights}</p>
           <p>
-            Développé avec amour par{" "}
+            {f.craftedBy}{" "}
             <a
               href="https://quailabs.tech/"
               target="_blank"
