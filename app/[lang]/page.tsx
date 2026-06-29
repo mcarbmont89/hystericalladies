@@ -1,14 +1,19 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Star, Heart } from "lucide-react";
-import { heroQuotes, site } from "@/lib/content";
+import { getContent, isLocale } from "@/lib/content";
+import { notFound } from "next/navigation";
 
-export default function HomePage() {
+export default function HomePage({ params }: { params: { lang: string } }) {
+  if (!isLocale(params.lang)) notFound();
+  const { site, routes, dict } = getContent(params.lang);
+  const t = dict.home;
+  const quotes = dict.heroQuotes;
+
   return (
     <>
-      {/* ─────────────────── HERO — BLACK STAGE ─────────────────── */}
+      {/* ─────────────────── HERO ─────────────────── */}
       <section className="relative overflow-hidden bg-paper text-ink">
-        {/* Soft scarlet glow */}
         <div
           className="pointer-events-none absolute -left-32 top-0 h-[28rem] w-[28rem] rounded-full bg-carmine/20 blur-[120px]"
           aria-hidden
@@ -17,43 +22,37 @@ export default function HomePage() {
         <div className="relative mx-auto grid max-w-7xl gap-12 px-6 py-20 sm:px-10 sm:py-28 lg:grid-cols-[1.4fr_1fr] lg:gap-16 lg:px-16 lg:py-32">
           <div>
             <p className="catalog-label text-ink-soft">
-              <span>N° 01 — Le Spectacle</span>
+              <span>{t.badge}</span>
             </p>
 
             <h1 className="mt-8 font-display text-[2.6rem] font-extrabold leading-[1.02] tracking-tightest text-ink sm:text-[3.6rem] lg:text-[4.75rem]">
               <span className="text-carmine">«&nbsp;</span>
-              {heroQuotes[0]}
+              {quotes[0]}
               <span className="text-carmine">&nbsp;»</span>
             </h1>
 
-            <div className="mt-10 flex items-center gap-1 text-carmine" aria-label="5 étoiles">
+            <div className="mt-10 flex items-center gap-1 text-carmine" aria-label={dict.starsLabel(5)}>
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star key={i} className="h-6 w-6 fill-current" strokeWidth={0} />
               ))}
             </div>
             <p className="mt-3 font-display text-lg font-semibold italic text-ink">
-              « It&apos;s a bold original »
+              {dict.boldOriginal}
             </p>
 
             <div className="mt-12 flex flex-wrap gap-4">
-              <Link href="/a-venir" className="btn-primary">
-                Dates de tournée
+              <Link href={routes.upcoming} className="btn-primary">
+                {t.ctaTour}
                 <ArrowRight className="h-4 w-4" aria-hidden />
               </Link>
-              <a
-                href={site.ticketsUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="btn-ghost"
-              >
-                Réserver
+              <a href={site.ticketsUrl} target="_blank" rel="noreferrer" className="btn-ghost">
+                {t.ctaBook}
               </a>
             </div>
           </div>
 
-          {/* Side quote stack */}
           <aside className="space-y-6 border-l border-ink/15 pl-8 lg:pl-10">
-            {heroQuotes.slice(1).map((q, i) => (
+            {quotes.slice(1).map((q, i) => (
               <blockquote
                 key={i}
                 className="font-display text-lg font-medium italic leading-snug text-ink-soft sm:text-xl"
@@ -67,14 +66,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─────────────────── APERÇU ─────────────────── */}
+      {/* ─────────────────── GALLERY TEASER ─────────────────── */}
       <section className="section bg-paper">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
             <div className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-paper-deep">
               <Image
                 src="/images/apercu-banner.png"
-                alt="Aperçu du spectacle"
+                alt={t.apercu.heading}
                 fill
                 sizes="(min-width: 1024px) 40vw, 100vw"
                 className="object-cover"
@@ -82,17 +81,15 @@ export default function HomePage() {
               />
             </div>
             <div>
-              <p className="catalog-label">N° 02 — Aperçu</p>
+              <p className="catalog-label">{t.apercu.label}</p>
               <h2 className="mt-6 font-display text-4xl font-extrabold leading-[1.05] tracking-tightest sm:text-5xl">
-                Jetez un coup d&apos;œil à la galerie pour suivre nos escapades.
+                {t.apercu.heading}
               </h2>
               <p className="mt-6 max-w-prose text-base leading-relaxed text-ink-soft">
-                Paris, Londres, Edmonton — chaque salle ajoute une page au catalogue.
-                Découvrez les photos de scène, les coulisses et les souvenirs des tournées
-                qui ont jalonné notre histoire.
+                {t.apercu.body}
               </p>
-              <Link href="/apercu" className="btn-ghost mt-10">
-                Voir la galerie
+              <Link href={routes.gallery} className="btn-ghost mt-10">
+                {t.apercu.cta}
                 <ArrowRight className="h-4 w-4" aria-hidden />
               </Link>
             </div>
@@ -100,7 +97,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─────────────────── À VENIR ─────────────────── */}
+      {/* ─────────────────── UPCOMING TEASER ─────────────────── */}
       <section className="section bg-paper-deep">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
@@ -108,7 +105,7 @@ export default function HomePage() {
               <div className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-paper">
                 <Image
                   src="/images/upcoming-banner.png"
-                  alt="Affiche prochaine tournée"
+                  alt={t.upcoming.heading}
                   fill
                   sizes="(min-width: 1024px) 40vw, 100vw"
                   className="object-cover"
@@ -116,16 +113,15 @@ export default function HomePage() {
               </div>
             </div>
             <div className="lg:order-1">
-              <p className="catalog-label">N° 03 — À venir</p>
+              <p className="catalog-label">{t.upcoming.label}</p>
               <h2 className="mt-6 font-display text-4xl font-extrabold leading-[1.05] tracking-tightest sm:text-5xl">
-                Découvrez nos prochaines dates de tournée.
+                {t.upcoming.heading}
               </h2>
               <p className="mt-6 max-w-prose text-base leading-relaxed text-ink-soft">
-                Nous écumons les théâtres et les festivals : Paris, Londres, et bien d&apos;autres.
-                Inscrivez-vous pour ne rien manquer.
+                {t.upcoming.body}
               </p>
-              <Link href="/a-venir" className="btn-ghost mt-10">
-                Dates de tournée
+              <Link href={routes.upcoming} className="btn-ghost mt-10">
+                {t.upcoming.cta}
                 <ArrowRight className="h-4 w-4" aria-hidden />
               </Link>
             </div>
@@ -133,58 +129,54 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─────────────────── CONTRIBUER — RED FEATURE ─────────────────── */}
+      {/* ─────────────────── SUPPORT ─────────────────── */}
       <section className="section bg-carmine text-ink">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_2fr] lg:items-center lg:gap-20">
           <div>
-            <p className="catalog-label text-ink before:bg-ink">N° 04 — Contribuer</p>
+            <p className="catalog-label text-ink before:bg-ink">{t.support.label}</p>
             <Heart className="mt-8 h-12 w-12 fill-ink text-ink" strokeWidth={1.5} aria-hidden />
           </div>
           <div>
             <h2 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tightest sm:text-5xl">
-              Soutenez notre tournée.
+              {t.support.heading}
             </h2>
             <p className="mt-6 max-w-prose text-base leading-relaxed text-ink/90">
-              Le Catalogue des Angoisses Sexuelles vit grâce à un public engagé. Votre don
-              finance les costumes, la musique originale, les salles et les déplacements de
-              la troupe. Chaque contribution prolonge la tournée d&apos;un soir de plus.
+              {t.support.body}
             </p>
             <Link
-              href="/contact"
+              href={routes.contact}
               className="mt-10 inline-flex items-center gap-2 rounded-full bg-paper px-8 py-3.5 font-sans text-sm font-semibold text-ink transition-colors hover:bg-paper-deep"
             >
-              Faire un don
+              {t.support.cta}
               <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ─────────────────── ACTUALITÉS ─────────────────── */}
+      {/* ─────────────────── NEWS TEASER ─────────────────── */}
       <section className="section bg-paper">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-paper-deep">
               <Image
                 src="/images/press/banner-london.png"
-                alt="Presse et critiques"
+                alt={t.news.heading}
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 className="object-cover"
               />
             </div>
             <div>
-              <p className="catalog-label">N° 05 — Actualités</p>
+              <p className="catalog-label">{t.news.label}</p>
               <h2 className="mt-6 font-display text-4xl font-extrabold leading-[1.05] tracking-tightest sm:text-5xl">
-                Ce que la presse dit de nous.
+                {t.news.heading}
               </h2>
               <p className="mt-6 max-w-prose text-base leading-relaxed text-ink-soft">
-                BilletRéduc, There Ought To Be Clowns, London Pub Theatre Magazine, Everything
-                Theatre, Info Edmonton… Lisez les critiques des théâtres et festivals où nous
-                avons joué.
+                {t.news.body}
               </p>
-              <Link href="/actualites" className="btn-ghost mt-10">
-                Lire les critiques
+              <Link href={routes.news} className="btn-ghost mt-10">
+                {t.news.cta}
                 <ArrowRight className="h-4 w-4" aria-hidden />
               </Link>
             </div>
@@ -195,16 +187,13 @@ export default function HomePage() {
       {/* ─────────────────── CONTACT TEASER ─────────────────── */}
       <section className="section bg-paper-deep">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="catalog-label justify-center">N° 06 — Contact</p>
+          <p className="catalog-label justify-center">{t.contact.label}</p>
           <h2 className="mt-6 font-display text-4xl font-extrabold leading-[1.05] tracking-tightest sm:text-5xl">
-            Programmateurs, presse, ou simple curieux ?
+            {t.contact.heading}
           </h2>
-          <p className="mt-6 text-base leading-relaxed text-ink-soft">
-            Écrivez-nous pour toute question relative aux tournées, à la programmation ou aux
-            collaborations.
-          </p>
-          <Link href="/contact" className="btn-primary mt-10">
-            Nous écrire
+          <p className="mt-6 text-base leading-relaxed text-ink-soft">{t.contact.body}</p>
+          <Link href={routes.contact} className="btn-primary mt-10">
+            {t.contact.cta}
             <ArrowRight className="h-4 w-4" aria-hidden />
           </Link>
         </div>

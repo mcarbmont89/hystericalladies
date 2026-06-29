@@ -1,23 +1,30 @@
 import { Mail, Phone, MapPin, Instagram, Youtube, Facebook } from "lucide-react";
+import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import ContactForm from "@/components/contact-form";
-import { site } from "@/lib/content";
+import { getContent, isLocale } from "@/lib/content";
 
-export const metadata = {
-  title: "Contact",
-  description: "Contactez The Hysterical Ladies pour toute question sur les tournées et la programmation.",
-};
+export function generateMetadata({ params }: { params: { lang: string } }): Metadata {
+  const lang = isLocale(params.lang) ? params.lang : "fr";
+  const t = getContent(lang).dict.contactPage;
+  return { title: t.pageTitle, description: t.metaDescription };
+}
 
-export default function ContactPage() {
+export default function ContactPage({ params }: { params: { lang: string } }) {
+  if (!isLocale(params.lang)) notFound();
+  const { site, dict } = getContent(params.lang);
+  const t = dict.contactPage;
+
   return (
     <>
       <section className="border-b border-ink/10 bg-paper-deep section">
         <div className="mx-auto max-w-7xl">
-          <p className="catalog-label">N° 01 — Nous écrire</p>
+          <p className="catalog-label">{t.headerLabel}</p>
           <h1 className="mt-6 max-w-4xl font-display text-5xl font-extrabold tracking-tightest leading-[1.02] sm:text-6xl lg:text-7xl">
-            Contact
+            {t.h1}
           </h1>
           <p className="mt-6 max-w-2xl font-display text-xl italic text-ink-soft sm:text-2xl">
-            Questions par rapport à nos tournées, programmation, presse ou collaborations.
+            {t.subhead}
           </p>
         </div>
       </section>
@@ -26,20 +33,20 @@ export default function ContactPage() {
         <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-[1.2fr_1fr] lg:gap-24">
           {/* Form */}
           <div>
-            <p className="catalog-label">Formulaire</p>
+            <p className="catalog-label">{t.formLabel}</p>
             <h2 className="mt-6 font-display text-3xl font-extrabold tracking-tightest leading-tight sm:text-4xl">
-              Envoyez-nous un message
+              {t.formHeading}
             </h2>
             <div className="mt-10">
-              <ContactForm />
+              <ContactForm content={getContent(params.lang)} />
             </div>
           </div>
 
           {/* Contact details */}
           <div className="lg:border-l lg:border-ink/15 lg:pl-12">
-            <p className="catalog-label">Coordonnées</p>
+            <p className="catalog-label">{t.detailsLabel}</p>
             <h2 className="mt-6 font-display text-3xl font-extrabold tracking-tightest leading-tight sm:text-4xl">
-              Au Haz Art
+              {t.detailsHeading}
             </h2>
 
             <dl className="mt-10 space-y-6 text-base text-ink-soft">
@@ -47,7 +54,7 @@ export default function ContactPage() {
                 <Mail className="mt-1 h-5 w-5 flex-shrink-0 text-carmine" aria-hidden />
                 <div>
                   <dt className="font-sans text-[0.65rem] uppercase tracking-catalog text-ink-soft/60">
-                    Email
+                    {t.emailLabel}
                   </dt>
                   <dd className="mt-1">
                     <a href={`mailto:${site.contact.email}`} className="hover:text-carmine">
@@ -61,19 +68,13 @@ export default function ContactPage() {
                 <Phone className="mt-1 h-5 w-5 flex-shrink-0 text-carmine" aria-hidden />
                 <div>
                   <dt className="font-sans text-[0.65rem] uppercase tracking-catalog text-ink-soft/60">
-                    Téléphone
+                    {t.phoneLabel}
                   </dt>
                   <dd className="mt-1 flex flex-col gap-0.5">
-                    <a
-                      href={`tel:${site.contact.phoneUK.replace(/\s/g, "")}`}
-                      className="hover:text-carmine"
-                    >
+                    <a href={`tel:${site.contact.phoneUK.replace(/\s/g, "")}`} className="hover:text-carmine">
                       {site.contact.phoneUK}
                     </a>
-                    <a
-                      href={`tel:${site.contact.phoneFR.replace(/\s/g, "")}`}
-                      className="hover:text-carmine"
-                    >
+                    <a href={`tel:${site.contact.phoneFR.replace(/\s/g, "")}`} className="hover:text-carmine">
                       {site.contact.phoneFR}
                     </a>
                   </dd>
@@ -84,7 +85,7 @@ export default function ContactPage() {
                 <MapPin className="mt-1 h-5 w-5 flex-shrink-0 text-carmine" aria-hidden />
                 <div>
                   <dt className="font-sans text-[0.65rem] uppercase tracking-catalog text-ink-soft/60">
-                    Adresse
+                    {t.addressLabel}
                   </dt>
                   <dd className="mt-1">{site.contact.address}</dd>
                 </div>
@@ -93,7 +94,7 @@ export default function ContactPage() {
 
             <div className="rule-carmine" />
 
-            <p className="catalog-label">Réseaux</p>
+            <p className="catalog-label">{t.socialsLabel}</p>
             <ul className="mt-5 flex gap-4">
               <li>
                 <a
@@ -135,7 +136,7 @@ export default function ContactPage() {
             <p className="text-xs leading-relaxed text-ink-soft/70">
               {site.contact.representative}
               <br />
-              SIRET {site.contact.siret} — Licence {site.contact.license}
+              SIRET {site.contact.siret} — {t.licenseWord} {site.contact.license}
             </p>
           </div>
         </div>
