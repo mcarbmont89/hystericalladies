@@ -13,7 +13,7 @@ export default function ContactPage() {
       <section className="border-b border-ink/10 bg-paper-deep section">
         <div className="mx-auto max-w-7xl">
           <p className="catalog-label">N° 01 — Nous écrire</p>
-          <h1 className="mt-6 max-w-4xl font-display text-5xl font-light leading-[1.05] sm:text-6xl lg:text-7xl">
+          <h1 className="mt-6 max-w-4xl font-display text-5xl font-extrabold tracking-tightest leading-[1.02] sm:text-6xl lg:text-7xl">
             Contact
           </h1>
           <p className="mt-6 max-w-2xl font-display text-xl italic text-ink-soft sm:text-2xl">
@@ -27,7 +27,7 @@ export default function ContactPage() {
           {/* Form */}
           <div>
             <p className="catalog-label">Formulaire</p>
-            <h2 className="mt-6 font-display text-3xl font-light leading-tight sm:text-4xl">
+            <h2 className="mt-6 font-display text-3xl font-extrabold tracking-tightest leading-tight sm:text-4xl">
               Envoyez-nous un message
             </h2>
             <div className="mt-10">
@@ -38,7 +38,7 @@ export default function ContactPage() {
           {/* Contact details */}
           <div className="lg:border-l lg:border-ink/15 lg:pl-12">
             <p className="catalog-label">Coordonnées</p>
-            <h2 className="mt-6 font-display text-3xl font-light leading-tight sm:text-4xl">
+            <h2 className="mt-6 font-display text-3xl font-extrabold tracking-tightest leading-tight sm:text-4xl">
               Au Haz Art
             </h2>
 

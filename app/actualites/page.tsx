@@ -12,7 +12,7 @@ export default function NewsPage() {
       <section className="border-b border-ink/10 bg-paper-deep section">
         <div className="mx-auto max-w-7xl">
           <p className="catalog-label">N° 01 — Presse & critiques</p>
-          <h1 className="mt-6 max-w-4xl font-display text-5xl font-light leading-[1.05] sm:text-6xl lg:text-7xl">
+          <h1 className="mt-6 max-w-4xl font-display text-5xl font-extrabold tracking-tightest leading-[1.02] sm:text-6xl lg:text-7xl">
             News &amp; Critiques
           </h1>
           <p className="mt-6 max-w-2xl font-display text-xl italic text-ink-soft sm:text-2xl">
@@ -73,15 +73,15 @@ export default function NewsPage() {
       </section>
 
       {/* Featured pull-quote */}
-      <section className="section bg-ink text-paper">
+      <section className="section bg-carmine text-ink">
         <div className="mx-auto max-w-4xl text-center">
-          <Star className="mx-auto h-6 w-6 fill-current text-brass" strokeWidth={0} aria-hidden />
-          <blockquote className="mt-8 font-display text-3xl font-light leading-tight sm:text-4xl lg:text-5xl">
+          <Star className="mx-auto h-7 w-7 fill-current text-ink" strokeWidth={0} aria-hidden />
+          <blockquote className="mt-8 font-display text-3xl font-extrabold tracking-tightest leading-[1.08] sm:text-4xl lg:text-5xl">
             «&nbsp;Si vous vous êtes déjà demandé comment les femmes gèrent leur sexualité,
             ne manquez pas{" "}
-            <em className="text-powder">The Catalogue of Sexual Anxieties</em>.&nbsp;»
+            <em className="not-italic underline decoration-ink/40 underline-offset-4">The Catalogue of Sexual Anxieties</em>.&nbsp;»
           </blockquote>
-          <p className="mt-8 font-sans text-xs uppercase tracking-catalog text-brass">
+          <p className="mt-8 font-sans text-xs font-semibold uppercase tracking-catalog text-ink/80">
             Info Edmonton · Août 2023
           </p>
         </div>

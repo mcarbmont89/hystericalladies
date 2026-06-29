@@ -16,7 +16,7 @@ export default function AboutPage() {
       <section className="border-b border-ink/10 bg-paper-deep section">
         <div className="mx-auto max-w-7xl">
           <p className="catalog-label">N° 01 — Le Spectacle</p>
-          <h1 className="mt-6 max-w-4xl font-display text-5xl font-light leading-[1.05] sm:text-6xl lg:text-7xl">
+          <h1 className="mt-6 max-w-4xl font-display text-5xl font-extrabold tracking-tightest leading-[1.05] sm:text-6xl lg:text-7xl">
             Le Catalogue des Angoisses Sexuelles
           </h1>
           <p className="mt-6 max-w-2xl font-display text-xl italic text-ink-soft sm:text-2xl">
@@ -29,7 +29,7 @@ export default function AboutPage() {
       {/* Synopsis */}
       <section className="section">
         <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-2 lg:gap-20">
-          <div className="relative aspect-[3/4] overflow-hidden bg-paper-deep">
+          <div className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-paper-deep">
             <Image
               src="/images/about-hero.png"
               alt="Affiche du spectacle Le Catalogue des Angoisses Sexuelles"
@@ -74,7 +74,7 @@ export default function AboutPage() {
         <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-[1fr_1.5fr] lg:gap-20">
           <div>
             <p className="catalog-label">N° 02 — Notre histoire</p>
-            <h2 className="mt-6 font-display text-4xl font-light leading-tight sm:text-5xl">
+            <h2 className="mt-6 font-display text-4xl font-extrabold tracking-tightest leading-tight sm:text-5xl">
               Trois amies, un après-midi pluvieux.
             </h2>
           </div>
@@ -124,7 +124,7 @@ export default function AboutPage() {
       <section className="section">
         <div className="mx-auto max-w-7xl">
           <p className="catalog-label">N° 03 — L'équipe</p>
-          <h2 className="mt-6 font-display text-4xl font-light leading-tight sm:text-5xl">
+          <h2 className="mt-6 font-display text-4xl font-extrabold tracking-tightest leading-tight sm:text-5xl">
             Notre équipe
           </h2>
 
@@ -154,18 +154,15 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="section bg-ink text-paper">
+      <section className="section bg-paper-deep text-ink">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="catalog-label justify-center text-brass before:bg-brass">
+          <p className="catalog-label justify-center">
             Prochaine étape
           </p>
-          <h2 className="mt-6 font-display text-4xl font-light leading-tight sm:text-5xl">
+          <h2 className="mt-6 font-display text-4xl font-extrabold tracking-tightest leading-tight sm:text-5xl">
             Voir le spectacle.
           </h2>
-          <Link
-            href="/a-venir"
-            className="mt-10 inline-flex items-center gap-2 bg-carmine px-7 py-3.5 font-sans text-sm uppercase tracking-catalog transition-colors hover:bg-carmine-deep"
-          >
+          <Link href="/a-venir" className="btn-primary mt-10">
             Dates de tournée
             <ArrowRight className="h-4 w-4" aria-hidden />
           </Link>

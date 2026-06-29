@@ -13,7 +13,7 @@ export default function UpcomingPage() {
       <section className="border-b border-ink/10 bg-paper-deep section">
         <div className="mx-auto max-w-7xl">
           <p className="catalog-label">N° 01 — Programmation</p>
-          <h1 className="mt-6 max-w-4xl font-display text-5xl font-light leading-[1.05] sm:text-6xl lg:text-7xl">
+          <h1 className="mt-6 max-w-4xl font-display text-5xl font-extrabold tracking-tightest leading-[1.02] sm:text-6xl lg:text-7xl">
             À venir
           </h1>
           <p className="mt-6 max-w-2xl font-display text-xl italic text-ink-soft sm:text-2xl">
@@ -33,7 +33,7 @@ export default function UpcomingPage() {
 
       <section className="section">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
-          <div className="relative aspect-[3/4] overflow-hidden bg-paper-deep">
+          <div className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-paper-deep">
             <Image
               src="/images/affiche-tour.jpg"
               alt="Affiche de tournée Le Catalogue des Angoisses Sexuelles"
@@ -54,7 +54,7 @@ export default function UpcomingPage() {
                   Représentation {String(i + 1).padStart(2, "0")}
                 </p>
 
-                <h2 className="mt-3 font-display text-3xl font-medium leading-tight sm:text-4xl">
+                <h2 className="mt-3 font-display text-3xl font-bold tracking-tightest leading-tight sm:text-4xl">
                   {show.venue}
                 </h2>
 

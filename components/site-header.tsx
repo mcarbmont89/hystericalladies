@@ -12,8 +12,8 @@ export default function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-ink/10 bg-paper/95 backdrop-blur">
       {/* Announcement banner */}
-      <div className="bg-ink text-paper">
-        <p className="mx-auto max-w-7xl px-4 py-2 text-center text-[0.7rem] uppercase tracking-catalog sm:text-xs">
+      <div className="bg-carmine text-ink">
+        <p className="mx-auto max-w-7xl px-4 py-2 text-center text-[0.7rem] font-semibold uppercase tracking-catalog sm:text-xs">
           {site.banner}
         </p>
       </div>

@@ -5,22 +5,26 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Playbill palette — aged paper, ink, theatre carmine, oxidised brass.
-        paper: "#F1E8D9",
-        "paper-deep": "#E8DCC7",
-        ink: "#181311",
-        "ink-soft": "#3A2E27",
-        carmine: "#A8243A",
-        "carmine-deep": "#7E1A2C",
-        brass: "#B08A3A",
-        powder: "#E2C8B8",
+        // Bold cabaret palette — black stage, scarlet spotlight, silver type.
+        // NOTE: tokens are intentionally dark-first.
+        //   paper / paper-deep  = dark section backgrounds
+        //   ink / ink-soft      = light foreground text
+        paper: "#0A0A0A",
+        "paper-deep": "#151515",
+        ink: "#F4F2EF",
+        "ink-soft": "#A9A6A2",
+        carmine: "#E10600",
+        "carmine-deep": "#B00400",
+        brass: "#C4C0BA",
+        powder: "#F2B5B0",
       },
       fontFamily: {
-        display: ["var(--font-display)", "Georgia", "serif"],
+        display: ["var(--font-display)", "system-ui", "sans-serif"],
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
       },
       letterSpacing: {
         catalog: "0.22em",
+        tightest: "-0.03em",
       },
       maxWidth: {
         prose: "62ch",

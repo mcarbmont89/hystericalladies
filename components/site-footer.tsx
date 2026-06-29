@@ -4,15 +4,15 @@ import { site, navigation } from "@/lib/content";
 
 export default function SiteFooter() {
   return (
-    <footer className="bg-ink text-paper">
+    <footer className="border-t border-ink/10 bg-paper-deep text-ink">
       <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 sm:px-10 lg:grid-cols-4 lg:px-16 lg:py-20">
         {/* Brand */}
         <div className="lg:col-span-1">
           <Link href="/" className="flex flex-col leading-none">
-            <span className="font-display text-xl italic text-powder">The Hysterical</span>
-            <span className="font-display text-2xl font-semibold">Ladies</span>
+          <span className="font-display text-xl font-semibold italic text-carmine">The Hysterical</span>
+          <span className="font-display text-2xl font-extrabold tracking-tightest">Ladies</span>
           </Link>
-          <p className="mt-4 max-w-xs text-sm text-paper/70">
+          <p className="mt-4 max-w-xs text-sm text-ink-soft">
             Une production{" "}
             <a
               href="https://auhazart.vercel.app/"
@@ -31,7 +31,7 @@ export default function SiteFooter() {
               target="_blank"
               rel="noreferrer"
               aria-label="Instagram"
-              className="text-paper/70 transition-colors hover:text-brass"
+              className="text-ink-soft transition-colors hover:text-carmine"
             >
               <Instagram className="h-5 w-5" />
             </a>
@@ -40,7 +40,7 @@ export default function SiteFooter() {
               target="_blank"
               rel="noreferrer"
               aria-label="YouTube"
-              className="text-paper/70 transition-colors hover:text-brass"
+              className="text-ink-soft transition-colors hover:text-carmine"
             >
               <Youtube className="h-5 w-5" />
             </a>
@@ -49,7 +49,7 @@ export default function SiteFooter() {
               target="_blank"
               rel="noreferrer"
               aria-label="Facebook"
-              className="text-paper/70 transition-colors hover:text-brass"
+              className="text-ink-soft transition-colors hover:text-carmine"
             >
               <Facebook className="h-5 w-5" />
             </a>
@@ -64,7 +64,7 @@ export default function SiteFooter() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="text-sm text-paper/80 transition-colors hover:text-paper"
+                  className="text-sm text-ink-soft transition-colors hover:text-ink"
                 >
                   {item.label}
                 </Link>
@@ -76,20 +76,20 @@ export default function SiteFooter() {
         {/* Contact */}
         <div>
           <h3 className="font-sans text-xs uppercase tracking-catalog text-brass">Contact</h3>
-          <ul className="mt-5 space-y-3 text-sm text-paper/80">
+          <ul className="mt-5 space-y-3 text-sm text-ink-soft">
             <li className="flex items-start gap-2.5">
               <Mail className="mt-0.5 h-4 w-4 flex-shrink-0" />
-              <a href={`mailto:${site.contact.email}`} className="break-all hover:text-paper">
+                <a href={`mailto:${site.contact.email}`} className="break-all hover:text-ink">
                 {site.contact.email}
               </a>
             </li>
             <li className="flex items-start gap-2.5">
               <Phone className="mt-0.5 h-4 w-4 flex-shrink-0" />
               <div className="flex flex-col gap-0.5">
-                <a href={`tel:${site.contact.phoneUK.replace(/\s/g, "")}`} className="hover:text-paper">
+                <a href={`tel:${site.contact.phoneUK.replace(/\s/g, "")}`} className="hover:text-ink">
                   {site.contact.phoneUK}
                 </a>
-                <a href={`tel:${site.contact.phoneFR.replace(/\s/g, "")}`} className="hover:text-paper">
+                <a href={`tel:${site.contact.phoneFR.replace(/\s/g, "")}`} className="hover:text-ink">
                   {site.contact.phoneFR}
                 </a>
               </div>
@@ -104,7 +104,7 @@ export default function SiteFooter() {
         {/* Legal */}
         <div>
           <h3 className="font-sans text-xs uppercase tracking-catalog text-brass">Mentions légales</h3>
-          <ul className="mt-5 space-y-1.5 text-sm text-paper/70">
+          <ul className="mt-5 space-y-1.5 text-sm text-ink-soft">
             <li>SIRET {site.contact.siret}</li>
             <li>{site.contact.representative}</li>
             <li>Licence {site.contact.license}</li>
@@ -112,8 +112,8 @@ export default function SiteFooter() {
         </div>
       </div>
 
-      <div className="border-t border-paper/10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 py-6 text-xs text-paper/60 sm:flex-row sm:px-10 lg:px-16">
+      <div className="border-t border-ink/10">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 py-6 text-xs text-ink-soft sm:flex-row sm:px-10 lg:px-16">
           <p>© {new Date().getFullYear()} Au Haz Art. Tous droits réservés.</p>
           <p>
             Développé avec amour par{" "}
@@ -121,7 +121,7 @@ export default function SiteFooter() {
               href="https://quailabs.tech/"
               target="_blank"
               rel="noreferrer"
-              className="text-brass underline decoration-brass underline-offset-4 hover:text-paper"
+              className="text-carmine underline decoration-carmine underline-offset-4 hover:text-ink"
             >
               QuAI Labs
             </a>

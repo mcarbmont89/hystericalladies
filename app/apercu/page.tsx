@@ -12,7 +12,7 @@ export default function GalleryPage() {
       <section className="border-b border-ink/10 bg-paper-deep section">
         <div className="mx-auto max-w-7xl">
           <p className="catalog-label">N° 01 — Galerie</p>
-          <h1 className="mt-6 max-w-4xl font-display text-5xl font-light leading-[1.05] sm:text-6xl lg:text-7xl">
+          <h1 className="mt-6 max-w-4xl font-display text-5xl font-extrabold tracking-tightest leading-[1.02] sm:text-6xl lg:text-7xl">
             Aperçu
           </h1>
           <p className="mt-6 max-w-2xl font-display text-xl italic text-ink-soft sm:text-2xl">
@@ -32,7 +32,7 @@ export default function GalleryPage() {
                 <p className="font-sans text-[0.65rem] uppercase tracking-catalog text-brass">
                   N° {String(idx + 1).padStart(2, "0")}
                 </p>
-                <h2 className="mt-2 font-display text-3xl font-medium leading-tight sm:text-4xl">
+                <h2 className="mt-2 font-display text-3xl font-bold tracking-tightest leading-tight sm:text-4xl">
                   {gallery.title}
                 </h2>
               </div>
@@ -45,7 +45,7 @@ export default function GalleryPage() {
               {gallery.photos.map((src, i) => (
                 <li key={src}>
                   <div
-                    className={`relative ${i % 3 === 0 ? "aspect-[3/4]" : "aspect-square"} overflow-hidden bg-paper-deep`}
+                    className={`relative ${i % 3 === 0 ? "aspect-[3/4]" : "aspect-square"} overflow-hidden rounded-xl bg-paper-deep`}
                   >
                     <Image
                       src={src}

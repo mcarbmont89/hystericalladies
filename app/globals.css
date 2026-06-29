@@ -11,37 +11,38 @@
     font-feature-settings: "ss01", "ss02", "liga", "kern";
   }
   ::selection {
-    @apply bg-carmine text-paper;
+    @apply bg-carmine text-ink;
   }
 }
 
 @layer components {
-  /* Catalog entry label, e.g. "N° 01 — APERÇU" */
+  /* Small eyebrow label, e.g. "N° 01 — APERÇU" */
   .catalog-label {
-    @apply inline-flex items-center gap-3 font-sans text-xs uppercase tracking-catalog text-ink-soft;
+    @apply inline-flex items-center gap-3 font-sans text-xs font-semibold uppercase tracking-catalog text-ink-soft;
   }
   .catalog-label::before {
     content: "";
-    @apply h-px w-10 bg-ink-soft;
+    @apply h-px w-10 bg-carmine;
   }
 
-  /* Inline carmine rule used to break paragraphs */
+  /* Inline scarlet rule used to break paragraphs */
   .rule-carmine {
     @apply my-10 h-px w-16 bg-carmine;
   }
 
-  /* Soft drop-shadow for press-quote cards */
+  /* Press-quote card on the dark stage */
   .quote-card {
-    @apply relative bg-paper-deep p-8 sm:p-10;
-    box-shadow: 0 1px 0 0 rgba(24, 19, 17, 0.08), 0 18px 40px -28px rgba(24, 19, 17, 0.4);
+    @apply relative rounded-2xl border border-ink/10 bg-paper-deep p-8 sm:p-10;
+    box-shadow: 0 18px 50px -30px rgba(0, 0, 0, 0.9);
   }
 
-  /* Primary CTA — bold, printed-button look */
+  /* Primary CTA — scarlet pill */
   .btn-primary {
-    @apply inline-flex items-center gap-2 bg-ink px-7 py-3 font-sans text-sm uppercase tracking-catalog text-paper transition-colors hover:bg-carmine focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-carmine;
+    @apply inline-flex items-center gap-2 rounded-full bg-carmine px-8 py-3.5 font-sans text-sm font-semibold text-ink transition-colors hover:bg-carmine-deep focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-carmine;
   }
+  /* Secondary CTA — outlined pill */
   .btn-ghost {
-    @apply inline-flex items-center gap-2 border border-ink/80 px-7 py-3 font-sans text-sm uppercase tracking-catalog text-ink transition-colors hover:border-carmine hover:text-carmine focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-carmine;
+    @apply inline-flex items-center gap-2 rounded-full border border-ink/40 px-8 py-3.5 font-sans text-sm font-semibold text-ink transition-colors hover:border-carmine hover:bg-carmine hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-carmine;
   }
 
   /* Section spacing — generous, theatrical */
