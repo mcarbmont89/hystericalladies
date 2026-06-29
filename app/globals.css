@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-paper text-ink antialiased;
+    font-feature-settings: "ss01", "ss02", "liga", "kern";
+  }
+  ::selection {
+    @apply bg-carmine text-paper;
+  }
+}
+
+@layer components {
+  /* Catalog entry label, e.g. "N° 01 — APERÇU" */
+  .catalog-label {
+    @apply inline-flex items-center gap-3 font-sans text-xs uppercase tracking-catalog text-ink-soft;
+  }
+  .catalog-label::before {
+    content: "";
+    @apply h-px w-10 bg-ink-soft;
+  }
+
+  /* Inline carmine rule used to break paragraphs */
+  .rule-carmine {
+    @apply my-10 h-px w-16 bg-carmine;
+  }
+
+  /* Soft drop-shadow for press-quote cards */
+  .quote-card {
+    @apply relative bg-paper-deep p-8 sm:p-10;
+    box-shadow: 0 1px 0 0 rgba(24, 19, 17, 0.08), 0 18px 40px -28px rgba(24, 19, 17, 0.4);
+  }
+
+  /* Primary CTA — bold, printed-button look */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-ink px-7 py-3 font-sans text-sm uppercase tracking-catalog text-paper transition-colors hover:bg-carmine focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-carmine;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 border border-ink/80 px-7 py-3 font-sans text-sm uppercase tracking-catalog text-ink transition-colors hover:border-carmine hover:text-carmine focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-carmine;
+  }
+
+  /* Section spacing — generous, theatrical */
+  .section {
+    @apply px-6 py-20 sm:px-10 sm:py-28 lg:px-16;
+  }
+}
