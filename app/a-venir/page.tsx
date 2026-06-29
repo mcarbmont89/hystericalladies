@@ -35,7 +35,7 @@ export default function UpcomingPage() {
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
           <div className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-paper-deep">
             <Image
-              src="/images/affiche-tour.jpg"
+              src="/images/affiche-tour.png"
               alt="Affiche de tournée Le Catalogue des Angoisses Sexuelles"
               fill
               sizes="(min-width: 1024px) 40vw, 100vw"
