@@ -2,6 +2,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getContent, isLocale } from "@/lib/content";
+import YouTubeEmbed from "@/components/youtube-embed";
 
 export function generateMetadata({ params }: { params: { lang: string } }): Metadata {
   const lang = isLocale(params.lang) ? params.lang : "fr";
@@ -11,7 +12,7 @@ export function generateMetadata({ params }: { params: { lang: string } }): Meta
 
 export default function GalleryPage({ params }: { params: { lang: string } }) {
   if (!isLocale(params.lang)) notFound();
-  const { galleries, dict } = getContent(params.lang);
+  const { galleries, site, dict } = getContent(params.lang);
   const t = dict.galleryPage;
 
   return (
@@ -25,6 +26,27 @@ export default function GalleryPage({ params }: { params: { lang: string } }) {
           <p className="mt-6 max-w-2xl font-display text-xl italic text-ink-soft sm:text-2xl">
             {t.subhead}
           </p>
+        </div>
+      </section>
+
+      {/* Videos */}
+      <section className="section bg-paper">
+        <div className="mx-auto max-w-7xl">
+          <div className="border-b border-ink/15 pb-6">
+            <p className="font-sans text-[0.65rem] uppercase tracking-catalog text-brass">
+              {t.videosLabel}
+            </p>
+            <h2 className="mt-2 font-display text-3xl font-bold tracking-tightest leading-tight sm:text-4xl">
+              {t.videosHeading}
+            </h2>
+          </div>
+          <ul className="mt-10 grid gap-6 sm:gap-8 md:grid-cols-2">
+            {site.videos.gallery.map((v) => (
+              <li key={v.id}>
+                <YouTubeEmbed id={v.id} title={v.title} playLabel={dict.playVideo} />
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

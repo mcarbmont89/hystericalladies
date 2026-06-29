@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ArrowRight, Star, Heart } from "lucide-react";
 import { getContent, isLocale } from "@/lib/content";
 import { notFound } from "next/navigation";
+import YouTubeEmbed from "@/components/youtube-embed";
 
 export default function HomePage({ params }: { params: { lang: string } }) {
   if (!isLocale(params.lang)) notFound();
@@ -63,6 +64,23 @@ export default function HomePage({ params }: { params: { lang: string } }) {
               </blockquote>
             ))}
           </aside>
+        </div>
+      </section>
+
+      {/* ─────────────────── TRAILER ─────────────────── */}
+      <section className="section bg-paper-deep">
+        <div className="mx-auto max-w-4xl">
+          <p className="catalog-label justify-center text-center">{t.video.label}</p>
+          <h2 className="mt-6 text-center font-display text-4xl font-extrabold leading-[1.05] tracking-tightest sm:text-5xl">
+            {t.video.heading}
+          </h2>
+          <div className="mt-10">
+            <YouTubeEmbed
+              id={site.videos.home.id}
+              title={site.videos.home.title}
+              playLabel={dict.playVideo}
+            />
+          </div>
         </div>
       </section>
 

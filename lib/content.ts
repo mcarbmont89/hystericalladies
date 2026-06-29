@@ -41,6 +41,17 @@ const shared = {
   },
   ticketsUrl: "https://www.whitebeartheatre.co.uk/whatson/the-catalogue-of-sexual-anxieties",
   bookingUrl: "https://essaion-theatre.com/spectacle/the-catalogue-of-sexual-anxieties/",
+  videos: {
+    home: { id: "olEmAx2ZdM8", title: "The Catalogue of Sexual Anxieties — Teaser" },
+    gallery: [
+      { id: "cOFvMe6AwqA", title: "The Catalogue Of Sexual Anxieties — Preparation For Sex" },
+      { id: "TPJbJD22Rl4", title: "Teaser Paris — The Catalogue of Sexual Anxieties" },
+    ],
+    news: [
+      { id: "fQqDxsOr7rU", title: "Global News Interview" },
+      { id: "jk6OQQ8Br-g", title: "Media Lunch Interview" },
+    ],
+  },
 };
 
 const teamBase = [
@@ -133,6 +144,7 @@ type Dictionary = {
   skipToContent: string;
   boldOriginal: string;
   heroQuotes: string[];
+  playVideo: string;
   starsLabel: (n: number) => string;
   teamRoles: Record<TeamId, string>;
   galleries: Record<GalleryId, { title: string; date: string }>;
@@ -143,6 +155,7 @@ type Dictionary = {
     badge: string;
     ctaTour: string;
     ctaBook: string;
+    video: { label: string; heading: string };
     apercu: { label: string; heading: string; body: string; cta: string };
     upcoming: { label: string; heading: string; body: string; cta: string };
     support: { label: string; heading: string; body: string; cta: string };
@@ -183,6 +196,8 @@ type Dictionary = {
     headerLabel: string;
     h1: string;
     subhead: string;
+    videosLabel: string;
+    videosHeading: string;
   };
   newsPage: {
     pageTitle: string;
@@ -190,6 +205,8 @@ type Dictionary = {
     headerLabel: string;
     h1: string;
     subhead: string;
+    videosLabel: string;
+    videosHeading: string;
     featuredQuote: string;
     featuredAttribution: string;
   };
@@ -258,6 +275,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       "Un mélange de récits authentiques, de faits historiques, enveloppés dans des harmonies somptueuses",
       "Vous allez certainement apprendre une ou deux choses",
     ],
+    playVideo: "Lire la vidéo",
     starsLabel: (n) => `${n} étoiles`,
     teamRoles: {
       charlotte: "Autrice et comédienne",
@@ -335,6 +353,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       badge: "N° 01 — Le Spectacle",
       ctaTour: "Dates de tournée",
       ctaBook: "Réserver",
+      video: { label: "Bande-annonce", heading: "Découvrez le spectacle en vidéo." },
       apercu: {
         label: "N° 02 — Aperçu",
         heading: "Jetez un coup d'œil à la galerie pour suivre nos escapades.",
@@ -419,6 +438,8 @@ const dictionaries: Record<Locale, Dictionary> = {
       h1: "Aperçu",
       subhead:
         "Jetez un coup d'œil à la galerie pour suivre nos escapades actuelles et passées.",
+      videosLabel: "N° 02 — Vidéos",
+      videosHeading: "Extraits & bandes-annonces",
     },
     newsPage: {
       pageTitle: "Actualités",
@@ -426,6 +447,8 @@ const dictionaries: Record<Locale, Dictionary> = {
       headerLabel: "N° 01 — Presse & critiques",
       h1: "News & Critiques",
       subhead: "Ce que la presse et le public disent du spectacle.",
+      videosLabel: "N° 02 — Interviews",
+      videosHeading: "Le spectacle dans les médias",
       featuredQuote:
         "Si vous vous êtes déjà demandé comment les femmes gèrent leur sexualité, ne manquez pas",
       featuredAttribution: "Info Edmonton · Août 2023",
@@ -495,6 +518,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       "A blend of authentic stories and historical facts, wrapped in sumptuous harmonies",
       "You're bound to learn a thing or two",
     ],
+    playVideo: "Play video",
     starsLabel: (n) => `${n} stars`,
     teamRoles: {
       charlotte: "Writer & performer",
@@ -572,6 +596,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       badge: "N° 01 — The Show",
       ctaTour: "Tour dates",
       ctaBook: "Book now",
+      video: { label: "Trailer", heading: "Watch the show in action." },
       apercu: {
         label: "N° 02 — Gallery",
         heading: "Take a look at the gallery to follow our escapades.",
@@ -655,6 +680,8 @@ const dictionaries: Record<Locale, Dictionary> = {
       headerLabel: "N° 01 — Gallery",
       h1: "Gallery",
       subhead: "Take a look at the gallery to follow our current and past escapades.",
+      videosLabel: "N° 02 — Videos",
+      videosHeading: "Clips & trailers",
     },
     newsPage: {
       pageTitle: "News",
@@ -662,6 +689,8 @@ const dictionaries: Record<Locale, Dictionary> = {
       headerLabel: "N° 01 — Press & reviews",
       h1: "News & Reviews",
       subhead: "What the press and the public say about the show.",
+      videosLabel: "N° 02 — Interviews",
+      videosHeading: "The show in the media",
       featuredQuote:
         "If you've ever wondered how women navigate their sexuality, don't miss",
       featuredAttribution: "Info Edmonton · August 2023",
@@ -731,6 +760,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       "Una mezcla de relatos auténticos y hechos históricos, envueltos en armonías suntuosas",
       "Seguro que aprenderás una o dos cosas",
     ],
+    playVideo: "Reproducir vídeo",
     starsLabel: (n) => `${n} estrellas`,
     teamRoles: {
       charlotte: "Autora y actriz",
@@ -808,6 +838,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       badge: "N° 01 — El Espectáculo",
       ctaTour: "Fechas de gira",
       ctaBook: "Reservar",
+      video: { label: "Tráiler", heading: "Descubre el espectáculo en vídeo." },
       apercu: {
         label: "N° 02 — Galería",
         heading: "Echa un vistazo a la galería para seguir nuestras escapadas.",
@@ -891,6 +922,8 @@ const dictionaries: Record<Locale, Dictionary> = {
       headerLabel: "N° 01 — Galería",
       h1: "Galería",
       subhead: "Echa un vistazo a la galería para seguir nuestras escapadas actuales y pasadas.",
+      videosLabel: "N° 02 — Vídeos",
+      videosHeading: "Clips y tráilers",
     },
     newsPage: {
       pageTitle: "Novedades",
@@ -898,6 +931,8 @@ const dictionaries: Record<Locale, Dictionary> = {
       headerLabel: "N° 01 — Prensa y críticas",
       h1: "Novedades y Críticas",
       subhead: "Lo que dicen la prensa y el público sobre el espectáculo.",
+      videosLabel: "N° 02 — Entrevistas",
+      videosHeading: "El espectáculo en los medios",
       featuredQuote:
         "Si alguna vez te has preguntado cómo viven las mujeres su sexualidad, no te pierdas",
       featuredAttribution: "Info Edmonton · Agosto 2023",
@@ -963,6 +998,7 @@ export function getContent(locale: Locale) {
       socials: shared.socials,
       ticketsUrl: shared.ticketsUrl,
       bookingUrl: shared.bookingUrl,
+      videos: shared.videos,
     },
     nav: navOrder.map((key) => ({
       key,
