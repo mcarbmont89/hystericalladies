@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Star, Heart } from "lucide-react";
+import { ArrowRight, Star } from "lucide-react";
 import { getContent, isLocale } from "@/lib/content";
 import { notFound } from "next/navigation";
 import YouTubeEmbed from "@/components/youtube-embed";
@@ -53,6 +53,16 @@ export default function HomePage({ params }: { params: { lang: string } }) {
           </div>
 
           <aside className="space-y-6 border-l border-ink/15 pl-8 lg:pl-10">
+            <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-paper-deep shadow-lg">
+              <Image
+                src="/images/hero-bg.png"
+                alt={`${site.title} — ${site.subtitle}`}
+                fill
+                sizes="(min-width: 1024px) 36vw, 100vw"
+                className="object-cover"
+                priority
+              />
+            </div>
             {quotes.slice(1).map((q, i) => (
               <blockquote
                 key={i}
@@ -149,10 +159,18 @@ export default function HomePage({ params }: { params: { lang: string } }) {
 
       {/* ─────────────────── SUPPORT ─────────────────── */}
       <section className="section bg-carmine text-ink">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_2fr] lg:items-center lg:gap-20">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_1.4fr] lg:items-center lg:gap-20">
           <div>
             <p className="catalog-label text-ink before:bg-ink">{t.support.label}</p>
-            <Heart className="mt-8 h-12 w-12 fill-ink text-ink" strokeWidth={1.5} aria-hidden />
+            <div className="relative mt-8 aspect-[4/3] overflow-hidden rounded-2xl bg-carmine-deep/40">
+              <Image
+                src="/images/contribute.png"
+                alt={t.support.heading}
+                fill
+                sizes="(min-width: 1024px) 30vw, 100vw"
+                className="object-cover"
+              />
+            </div>
           </div>
           <div>
             <h2 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tightest sm:text-5xl">

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowUpRight, Star } from "lucide-react";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -12,7 +13,7 @@ export function generateMetadata({ params }: { params: { lang: string } }): Meta
 
 export default function NewsPage({ params }: { params: { lang: string } }) {
   if (!isLocale(params.lang)) notFound();
-  const { reviews, site, dict } = getContent(params.lang);
+  const { reviews, site, pressMedia, dict } = getContent(params.lang);
   const t = dict.newsPage;
 
   return (
@@ -50,6 +51,42 @@ export default function NewsPage({ params }: { params: { lang: string } }) {
         </div>
       </section>
 
+      {/* Press coverage gallery */}
+      <section className="section bg-paper">
+        <div className="mx-auto max-w-7xl">
+          <div className="border-b border-ink/15 pb-6">
+            <p className="font-sans text-[0.65rem] uppercase tracking-catalog text-brass">
+              {t.pressLabel}
+            </p>
+            <h2 className="mt-2 font-display text-3xl font-bold tracking-tightest leading-tight sm:text-4xl">
+              {t.pressHeading}
+            </h2>
+          </div>
+          <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {pressMedia.map((m) => (
+              <li key={m.id} className="group">
+                <div
+                  className={`relative overflow-hidden rounded-2xl bg-paper-deep ${
+                    m.aspect === "portrait" ? "aspect-[3/4]" : "aspect-[4/3]"
+                  }`}
+                >
+                  <Image
+                    src={m.image}
+                    alt={m.caption}
+                    fill
+                    sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <p className="mt-3 font-sans text-[0.7rem] uppercase tracking-catalog text-ink-soft">
+                  {m.caption}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {/* Quote grid */}
       <section className="section bg-paper-deep">
         <div className="mx-auto max-w-7xl">
@@ -75,6 +112,17 @@ export default function NewsPage({ params }: { params: { lang: string } }) {
                 </blockquote>
 
                 <footer className="mt-6 border-t border-ink/15 pt-5">
+                  {r.logo && (
+                    <div className="relative mb-4 h-9 w-28">
+                      <Image
+                        src={r.logo}
+                        alt={r.source}
+                        fill
+                        sizes="112px"
+                        className="object-contain object-left"
+                      />
+                    </div>
+                  )}
                   <p className="font-sans text-[0.7rem] uppercase tracking-catalog text-ink-soft">
                     {r.location}
                   </p>

@@ -1,9 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Instagram, Youtube, Facebook, Mail, Phone, MapPin } from "lucide-react";
 import type { SiteContent } from "@/lib/content";
 
 export default function SiteFooter({ content }: { content: SiteContent }) {
-  const { site, nav, routes, dict } = content;
+  const { site, nav, routes, partners, dict } = content;
   const f = dict.footer;
 
   return (
@@ -111,6 +112,32 @@ export default function SiteFooter({ content }: { content: SiteContent }) {
             <li>SIRET {site.contact.siret}</li>
             <li>{site.contact.representative}</li>
             <li>{f.licenseWord} {site.contact.license}</li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Partners */}
+      <div className="border-t border-ink/10">
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 px-6 py-10 sm:flex-row sm:px-10 lg:px-16">
+          <p className="font-sans text-[0.65rem] uppercase tracking-catalog text-brass">
+            {f.partnersLabel}
+          </p>
+          <ul className="flex flex-wrap items-center gap-8">
+            {partners.map((p) => (
+              <li key={p.id}>
+                <a href={p.url} target="_blank" rel="noreferrer" aria-label={p.name}>
+                  <div className="relative h-12 w-28 opacity-70 transition-opacity hover:opacity-100">
+                    <Image
+                      src={p.image}
+                      alt={p.name}
+                      fill
+                      sizes="112px"
+                      className="object-contain object-left"
+                    />
+                  </div>
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

@@ -52,6 +52,15 @@ const shared = {
       { id: "jk6OQQ8Br-g", title: "Media Lunch Interview" },
     ],
   },
+  partners: [
+    { id: "auhazart", name: "Au Haz Art", image: "/images/logo-aha.png", url: "https://auhazart.vercel.app/" },
+    { id: "spedidam", name: "SPEDIDAM", image: "/images/logo-spedidam.png", url: "https://www.spedidam.fr/" },
+  ],
+  pressMedia: [
+    { id: "edmonton", image: "/images/press/screenshot-edmonton.png", aspect: "portrait" },
+    { id: "stalbert", image: "/images/press/news-stalbert.jpg", aspect: "landscape" },
+    { id: "paris", image: "/images/press/banner-paris.png", aspect: "landscape" },
+  ],
 };
 
 const teamBase = [
@@ -115,10 +124,10 @@ const galleryBase = [
 const reviewBase = [
   { id: "billetreduc", stars: 5, url: "https://www.billetreduc.com/spectacle/the-catalogue-of-sexual-anxieties-355517" },
   { id: "beyond", stars: 5, url: "https://www.beyondthecurtain.co.uk/2024/09/the-catalogue-of-sexual-anxieties.html" },
-  { id: "clowns", stars: 5, url: "https://oughttobeclowns.com/2024/09/review-the-catalogue-of-sexual-anxieties-white-bear-theatre.html/" },
-  { id: "londonpub", stars: 4, url: "https://www.londonpubtheatres.com/review-the-catalogue-of-sexual-anxieties-at-white-bear-theatre-27-28-september-2024" },
-  { id: "everything", stars: 4, url: "https://everything-theatre.co.uk/2024/09/review-the-catalogue-of-sexual-insecurities-white-bear-theatre/" },
-  { id: "peg", stars: 3, url: "#" },
+  { id: "clowns", stars: 5, url: "https://oughttobeclowns.com/2024/09/review-the-catalogue-of-sexual-anxieties-white-bear-theatre.html/", logo: "/images/press/logo-otbc.jpg" },
+  { id: "londonpub", stars: 4, url: "https://www.londonpubtheatres.com/review-the-catalogue-of-sexual-anxieties-at-white-bear-theatre-27-28-september-2024", logo: "/images/press/logo-lptm.jpg" },
+  { id: "everything", stars: 4, url: "https://everything-theatre.co.uk/2024/09/review-the-catalogue-of-sexual-insecurities-white-bear-theatre/", logo: "/images/press/logo-everything-theatre.png" },
+  { id: "peg", stars: 3, url: "#", logo: "/images/press/logo-thepeg.png" },
   { id: "infoedmonton", stars: 5, url: "https://infoedmonton.com/article/fringe-show-recommendations-2023-ongoing/" },
   { id: "12thnight", stars: 5, url: "https://12thnight.ca/2023/08/19/lets-play-whos-the-deviant-the-catalogue-of-sexual-anxieties-a-fringe-review/" },
 ] as const;
@@ -207,6 +216,10 @@ type Dictionary = {
     subhead: string;
     videosLabel: string;
     videosHeading: string;
+    pressLabel: string;
+    pressHeading: string;
+    featuredInLabel: string;
+    pressMedia: { edmonton: string; stalbert: string; paris: string };
     featuredQuote: string;
     featuredAttribution: string;
   };
@@ -247,6 +260,7 @@ type Dictionary = {
     licenseWord: string;
     rights: string;
     craftedBy: string;
+    partnersLabel: string;
   };
 };
 
@@ -449,6 +463,14 @@ const dictionaries: Record<Locale, Dictionary> = {
       subhead: "Ce que la presse et le public disent du spectacle.",
       videosLabel: "N° 02 — Interviews",
       videosHeading: "Le spectacle dans les médias",
+      pressLabel: "N° 03 — Revue de presse",
+      pressHeading: "À l'affiche dans la presse",
+      featuredInLabel: "Ils en parlent",
+      pressMedia: {
+        edmonton: "Edmonton Fringe Theatre Festival",
+        stalbert: "Couverture presse — St. Albert",
+        paris: "Saison parisienne",
+      },
       featuredQuote:
         "Si vous vous êtes déjà demandé comment les femmes gèrent leur sexualité, ne manquez pas",
       featuredAttribution: "Info Edmonton · Août 2023",
@@ -491,6 +513,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       licenseWord: "Licence",
       rights: "Tous droits réservés.",
       craftedBy: "Développé avec amour par",
+      partnersLabel: "Avec le soutien de",
     },
   },
 
@@ -691,6 +714,14 @@ const dictionaries: Record<Locale, Dictionary> = {
       subhead: "What the press and the public say about the show.",
       videosLabel: "N° 02 — Interviews",
       videosHeading: "The show in the media",
+      pressLabel: "N° 03 — Press coverage",
+      pressHeading: "In the press",
+      featuredInLabel: "As featured in",
+      pressMedia: {
+        edmonton: "Edmonton Fringe Theatre Festival",
+        stalbert: "Press coverage — St. Albert",
+        paris: "Paris season",
+      },
       featuredQuote:
         "If you've ever wondered how women navigate their sexuality, don't miss",
       featuredAttribution: "Info Edmonton · August 2023",
@@ -733,6 +764,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       licenseWord: "License",
       rights: "All rights reserved.",
       craftedBy: "Crafted with love by",
+      partnersLabel: "Supported by",
     },
   },
 
@@ -933,6 +965,14 @@ const dictionaries: Record<Locale, Dictionary> = {
       subhead: "Lo que dicen la prensa y el público sobre el espectáculo.",
       videosLabel: "N° 02 — Entrevistas",
       videosHeading: "El espectáculo en los medios",
+      pressLabel: "N° 03 — Prensa",
+      pressHeading: "En la prensa",
+      featuredInLabel: "Aparecemos en",
+      pressMedia: {
+        edmonton: "Edmonton Fringe Theatre Festival",
+        stalbert: "Cobertura de prensa — St. Albert",
+        paris: "Temporada en París",
+      },
       featuredQuote:
         "Si alguna vez te has preguntado cómo viven las mujeres su sexualidad, no te pierdas",
       featuredAttribution: "Info Edmonton · Agosto 2023",
@@ -975,6 +1015,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       licenseWord: "Licencia",
       rights: "Todos los derechos reservados.",
       craftedBy: "Desarrollado con amor por",
+      partnersLabel: "Con el apoyo de",
     },
   },
 };
@@ -1030,6 +1071,12 @@ export function getContent(locale: Locale) {
       source: d.reviews[r.id].source,
       url: r.url,
       stars: r.stars,
+      logo: (r as { logo?: string }).logo,
+    })),
+    partners: shared.partners.map((p) => ({ ...p })),
+    pressMedia: shared.pressMedia.map((m) => ({
+      ...m,
+      caption: d.newsPage.pressMedia[m.id as keyof typeof d.newsPage.pressMedia],
     })),
     upcomingShows: upcomingBase.map((u) => ({
       venue: u.venue,

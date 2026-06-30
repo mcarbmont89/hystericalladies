@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Mail, Phone, MapPin, Instagram, Youtube, Facebook } from "lucide-react";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -26,6 +27,20 @@ export default function ContactPage({ params }: { params: { lang: string } }) {
           <p className="mt-6 max-w-2xl font-display text-xl italic text-ink-soft sm:text-2xl">
             {t.subhead}
           </p>
+        </div>
+      </section>
+
+      {/* Banner */}
+      <section className="bg-paper">
+        <div className="relative h-56 w-full overflow-hidden sm:h-72 lg:h-[26rem]">
+          <Image
+            src="/images/contact-banner.png"
+            alt={t.h1}
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority
+          />
         </div>
       </section>
 

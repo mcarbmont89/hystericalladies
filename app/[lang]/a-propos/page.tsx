@@ -69,6 +69,15 @@ export default function AboutPage({ params }: { params: { lang: string } }) {
             <h2 className="mt-6 font-display text-4xl font-extrabold tracking-tightest leading-tight sm:text-5xl">
               {t.storyHeading}
             </h2>
+            <div className="relative mt-10 aspect-[4/3] overflow-hidden rounded-2xl bg-paper">
+              <Image
+                src="/images/story-1.jpg"
+                alt={t.storyHeading}
+                fill
+                sizes="(min-width: 1024px) 38vw, 100vw"
+                className="object-cover"
+              />
+            </div>
           </div>
           <div className="space-y-5 text-base leading-relaxed text-ink-soft">
             <p>{t.story.p1}</p>
@@ -86,6 +95,19 @@ export default function AboutPage({ params }: { params: { lang: string } }) {
             <p>{t.story.p5}</p>
             <p>{t.story.p6}</p>
           </div>
+        </div>
+      </section>
+
+      {/* Story banner */}
+      <section className="bg-paper">
+        <div className="relative h-56 w-full overflow-hidden sm:h-72 lg:h-96">
+          <Image
+            src="/images/story-2.jpg"
+            alt={site.subtitle}
+            fill
+            sizes="100vw"
+            className="object-cover"
+          />
         </div>
       </section>
 
