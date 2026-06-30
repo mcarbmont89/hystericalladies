@@ -52,7 +52,7 @@ export default function NewsPage({ params }: { params: { lang: string } }) {
       </section>
 
       {/* Press coverage gallery */}
-      <section className="section bg-paper">
+      <section className="section bg-paper-deep">
         <div className="mx-auto max-w-7xl">
           <div className="border-b border-ink/15 pb-6">
             <p className="font-sans text-[0.65rem] uppercase tracking-catalog text-brass">
@@ -88,7 +88,7 @@ export default function NewsPage({ params }: { params: { lang: string } }) {
       </section>
 
       {/* Quote grid */}
-      <section className="section bg-paper-deep">
+      <section className="section bg-paper">
         <div className="mx-auto max-w-7xl">
           <ul className="grid gap-6 sm:gap-8 md:grid-cols-2">
             {reviews.map((r, i) => (
@@ -113,13 +113,13 @@ export default function NewsPage({ params }: { params: { lang: string } }) {
 
                 <footer className="mt-6 border-t border-ink/15 pt-5">
                   {r.logo && (
-                    <div className="relative mb-4 h-9 w-28">
+                    <div className="relative mb-4 h-11 w-32 rounded-md bg-ink">
                       <Image
                         src={r.logo}
                         alt={r.source}
                         fill
-                        sizes="112px"
-                        className="object-contain object-left"
+                        sizes="128px"
+                        className="object-contain p-2"
                       />
                     </div>
                   )}

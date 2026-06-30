@@ -126,13 +126,13 @@ export default function SiteFooter({ content }: { content: SiteContent }) {
             {partners.map((p) => (
               <li key={p.id}>
                 <a href={p.url} target="_blank" rel="noreferrer" aria-label={p.name}>
-                  <div className="relative h-12 w-28 opacity-70 transition-opacity hover:opacity-100">
+                  <div className="relative h-16 w-32 rounded-lg bg-ink opacity-90 transition-opacity hover:opacity-100">
                     <Image
                       src={p.image}
                       alt={p.name}
                       fill
-                      sizes="112px"
-                      className="object-contain object-left"
+                      sizes="128px"
+                      className="object-contain p-3"
                     />
                   </div>
                 </a>
