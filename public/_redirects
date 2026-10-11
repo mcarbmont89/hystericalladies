@@ -1,0 +1,11 @@
+# Language redirects
+/fr    /       301
+/fr/*  /:splat 301
+
+# Trailing-slash normalisation (Cloudflare Pages handles this, belt-and-suspenders)
+/a-propos   /a-propos/  301
+/a-venir    /a-venir/   301
+/apercu     /apercu/    301
+/actualites /actualites/ 301
+/contact    /contact/   301
+/en         /en/        301

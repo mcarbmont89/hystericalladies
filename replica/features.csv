@@ -1,0 +1,23 @@
+feature,area,priority,original,clone,notes
+Multilingual site (FR / EN / ES),i18n,must,yes,no,FR primary; EN secondary; ES scaffold only — folder-based routing for static export
+Home page hero with show banner,home,must,yes,no,Large image with show title overlay and taglines
+Tagline quote blocks,home,must,yes,no,3–4 pull-quote blocks on homepage
+Navigation bar with language switcher,nav,must,yes,no,Links + FR/EN/ES toggle
+About page with performer bios,about,must,yes,no,Charlotte Szabo / Marion Poli / Aniqa Charania + full crew list
+Upcoming shows page with event cards,dates,must,yes,no,Each card: venue / city / dates / ticket CTA button
+"Stay tuned" empty state on upcoming page,dates,must,yes,no,Shown when no active tour dates
+Photo gallery page grouped by venue/year,gallery,must,yes,no,Groups: Essaïon 2024 / White Bear 2024 / Skirts of Fire 2024 / Edmonton 2023 / Paris 2022
+Press reviews page with star ratings,press,must,yes,no,9 reviews — source / quote / rating / date / city
+Contact form (Name + Email + Message),contact,must,yes,no,Static form — wire to external service (Formspree or similar) at deploy time
+Social media links (Instagram / YouTube / Facebook),social,must,yes,no,In nav/footer and contact page
+Footer with address / phone / email / SIRET,footer,must,yes,no,Full org details for Au Haz Art
+Mobile-responsive layout,responsive,must,yes,no,Site is currently responsive — replicate breakpoints
+Cloudflare Pages static export (output: 'export'),deploy,must,yes,no,next.config.mjs output:'export'; no SSR/API routes
+Form success / error states,contact,should,yes,no,Visual feedback after form submission
+Smooth scroll / in-page anchors,ux,should,yes,no,Some sections appear to use anchor navigation
+Page transitions / animations,ux,could,yes,no,Low priority; build plain first
+Spanish content parity,i18n,could,yes,no,Scaffold /es/ pages but leave content as EN fallback initially
+SEO meta tags per page / language,seo,should,yes,no,Title + description + og:image per route + lang
+Favicon and brand assets,brand,must,yes,no,Keep "Hysterical Ladies" brand — do NOT run /replica-brand
+Donate / support section on home,home,could,yes,no,Seen on homepage — low priority for v1
+Newsletter or mailing list signup,engagement,could,no,no,Not clearly present — skip unless confirmed

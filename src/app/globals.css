@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,600;1,700;1,800;1,900&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    @apply bg-bg text-text font-sans;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    @apply font-display italic;
+  }
+
+  /* Skip to content */
+  .skip-link {
+    @apply absolute -top-full left-4 bg-accent text-on-accent px-4 py-2 text-sm font-semibold rounded-sm z-[100];
+  }
+  .skip-link:focus { @apply top-4; }
+}
+
+@layer components {
+  .section-pad { @apply py-20 px-6; }
+  .content-wrap { @apply max-w-content mx-auto; }
+
+  /* Section alternating backgrounds */
+  .section-dark { @apply bg-bg; }
+  .section-red  { @apply bg-accent; }
+}
